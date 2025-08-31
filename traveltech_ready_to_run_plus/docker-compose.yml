@@ -1,0 +1,32 @@
+
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: travel
+      POSTGRES_PASSWORD: travel
+      POSTGRES_DB: travel
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build: ./backend
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://travel:travel@db:5432/travel?schema=public
+      PORT: 4000
+      NODE_ENV: development
+      ENABLE_SWAGGER: "true"
+      JWT_SECRET: devsecret
+    ports:
+      - "4000:4000"
+    command: sh -c "npx prisma db push && npx prisma db seed && node dist/main.js"
+
+volumes:
+  pgdata:
