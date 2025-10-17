@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: travel-connect
+    env: node
+    plan: free
+    rootDir: .
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TZ
+        value: Europe/Paris
+      - key: SESSION_SECRET
+        generateValue: true
+    healthCheckPath: /healthz

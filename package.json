@@ -1,0 +1,17 @@
+{
+  "name": "travel-connect",
+  "version": "1.0.0",
+  "description": "Starter minimal pour déployer Travel-Connect sur Render via GitHub (Node/Express).",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
