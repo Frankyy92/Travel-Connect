@@ -1,7 +1,7 @@
 {
-  "name": "travel-connect",
-  "version": "1.0.1",
-  "description": "Starter CJS pour Render (corrige certains soucis ESM/502).",
+  "name": "travel-connect-ultra-simple",
+  "version": "1.0.0",
+  "description": "Ultra simple Render starter (CJS) avec /api/ping prêt.",
   "main": "server.cjs",
   "scripts": {
     "start": "node server.cjs"

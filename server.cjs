@@ -3,13 +3,14 @@ const path = require('path');
 
 const app = express();
 
-// Statique
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Healthcheck
 app.get(['/health', '/healthz'], (_req, res) => res.status(200).send('OK'));
 
-// Racine
+app.get('/api/ping', (_req, res) => {
+  res.json({ status: 'ok', time: new Date().toISOString() });
+});
+
 app.get('/', (_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -17,5 +18,5 @@ app.get('/', (_req, res) => {
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 app.listen(PORT, HOST, () => {
-  console.log('Travel-Connect CJS en ligne sur ' + HOST + ':' + PORT);
+  console.log('Travel-Connect ultra-simple en ligne sur ' + HOST + ':' + PORT);
 });
